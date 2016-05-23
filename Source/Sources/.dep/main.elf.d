@@ -1,0 +1,1 @@
+main.elf: beep.h

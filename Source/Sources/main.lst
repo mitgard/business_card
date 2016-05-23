@@ -1,0 +1,61 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB7:
+  20               	.LM1:
+  21 0000 1F93      		push r17
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0002 00D0      		rcall scenary_changer
+  26 0004 182F      		mov r17,r24
+  27               	.LM3:
+  28 0006 00D0      		rcall animation
+  29 0008 812F      		mov r24,r17
+  30 000a 00D0      		rcall animation
+  31 000c 812F      		mov r24,r17
+  32 000e 00D0      		rcall animation
+  33               	.LM4:
+  34 0010 85B7      		in r24,85-32
+  35 0012 877E      		andi r24,lo8(-25)
+  36 0014 8061      		ori r24,lo8(16)
+  37 0016 85BF      		out 85-32,r24
+  38               	.LM5:
+  39 0018 85B7      		in r24,85-32
+  40 001a 8062      		ori r24,lo8(32)
+  41 001c 85BF      		out 85-32,r24
+  42               	.LM6:
+  43               	/* #APP */
+  44               	 ;  26 "main.c" 1
+  45 001e 8895      		sleep
+  46               		
+  47               	 ;  0 "" 2
+  48               	.LM7:
+  49               	/* #NOAPP */
+  50 0020 80E0      		ldi r24,lo8(0)
+  51 0022 90E0      		ldi r25,hi8(0)
+  52               	/* epilogue start */
+  53 0024 1F91      		pop r17
+  54 0026 0895      		ret
+  55               	.LFE7:
+  81               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:2      *ABS*:0000003f __SREG__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:5      *ABS*:00000034 __CCP__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+scenary_changer
+animation

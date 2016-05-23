@@ -1,0 +1,63 @@
+   1               		.file	"memory.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	scenary_changer
+  18               	scenary_changer:
+  19               	.LFB7:
+  20               	.LM1:
+  21 0000 1F93      		push r17
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0002 80E0      		ldi r24,lo8(startScenary)
+  26 0004 90E0      		ldi r25,hi8(startScenary)
+  27 0006 00D0      		rcall __eerd_byte_tn13a
+  28 0008 182F      		mov r17,r24
+  29               	.LVL0:
+  30               	.LM3:
+  31 000a 682F      		mov r22,r24
+  32 000c 6F5F      		subi r22,lo8(-(1))
+  33 000e 80E0      		ldi r24,lo8(startScenary)
+  34 0010 90E0      		ldi r25,hi8(startScenary)
+  35 0012 00D0      		rcall __eewr_byte_tn13a
+  36               	.LM4:
+  37 0014 1330      		cpi r17,lo8(3)
+  38 0016 00F0      		brlo .L2
+  39               	.LM5:
+  40 0018 80E0      		ldi r24,lo8(startScenary)
+  41 001a 90E0      		ldi r25,hi8(startScenary)
+  42 001c 60E0      		ldi r22,lo8(0)
+  43 001e 00D0      		rcall __eewr_byte_tn13a
+  44               	.L2:
+  45               	.LM6:
+  46 0020 812F      		mov r24,r17
+  47 0022 90E0      		ldi r25,lo8(0)
+  48               	/* epilogue start */
+  49 0024 1F91      		pop r17
+  50               	.LVL1:
+  51 0026 0895      		ret
+  52               	.LFE7:
+  54               	.global	startScenary
+  55               		.section	.eeprom,"aw",@progbits
+  58               	startScenary:
+  59 0000 00        		.skip 1,0
+  84               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 memory.c
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:2      *ABS*:0000003f __SREG__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:5      *ABS*:00000034 __CCP__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:18     .text:00000000 scenary_changer
+C:\Users\Rustam\AppData\Local\Temp/ccoNgrIC.s:58     .eeprom:00000000 startScenary
+
+UNDEFINED SYMBOLS
+__eerd_byte_tn13a
+__eewr_byte_tn13a
