@@ -15,7 +15,7 @@ int main (void)
 	scenary = scenary_changer();
 	
 	uint8_t i= 0;
-	while(i<3)
+	while(i<REPEATER)
 	{
 	animation(scenary);
 	i++;

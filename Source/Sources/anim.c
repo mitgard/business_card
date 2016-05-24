@@ -89,15 +89,28 @@ void animation(uint8_t scenary)
 	while(i<COUNTLED)
 	{
 		led_control(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i],ON);
-//		led_control(ledInit[COUNTLED-i],ledCtrl[COUNTLED-i],ON);
-		
-		_delay_ms(25);
+		_delay_ms(30);
 		led_control(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i],OFF);
-//		led_control(ledInit[COUNTLED-i],ledCtrl[COUNTLED-i],OFF);
+
 		i++; 
 	}
 	
 	}
+
+/*	if(scenary ==0x04)
+	{
+	
+	i=0;
+	while(i<COUNTLED)
+	{
+		led_control(ledInit[i]|ledInit[COUNTLED/2+i],ledCtrl[i],ON);
+		_delay_ms(25);
+		led_control(ledInit[i]|ledInit[COUNTLED/2+i],ledCtrl[i],OFF);
+
+		i++; 
+	}
+
+	}*/
 
 	return 0;
 }

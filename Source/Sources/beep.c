@@ -12,13 +12,19 @@ const uint16_t frequences[COUNT_NOTES] PROGMEM = {
 	311, 369, 311, 466, 392 };
 
 //Note duration
-const uint16_t durations[COUNT_NOTES] PROGMEM = {
+/*const uint16_t durations[COUNT_NOTES] PROGMEM = {
 	350, 350, 350, 250, 100, 350, 250, 100, 700,
 	350, 350, 350, 250, 100, 350, 250, 100, 700,
 	350, 250, 100, 350, 250, 100, 100, 100, 450,
 	150, 350, 250, 100, 100, 100, 450,
 	150, 350, 250, 100, 750 };
-
+*/
+const uint16_t durations[COUNT_NOTES] PROGMEM = {
+	700, 700, 700, 500, 200, 700, 500, 200, 1400,
+	700, 700, 700, 500, 200, 700, 500, 200, 1400,
+	700, 500, 200, 700, 500, 200, 200, 200, 900,
+	300, 700, 500, 200, 200, 200, 900,
+	300, 700, 500, 200, 1500 };
 
 #ifndef	_FREQ_
 #define F_CPU 9600000UL
@@ -40,8 +46,8 @@ void march()
 { 	 
 		setup();
 		doSound();
-		PORTB=0x00;
-		DDRB |= 0x00;
+		PORTB = 0x00;
+		DDRB = 0x00;
 		set_sleep_mode(SLEEP_MODE_PWR_DOWN);
 		sleep_enable(); 
     	sleep_cpu();
@@ -63,12 +69,12 @@ inline void doSound(void)
 		int16_t dur = pgm_read_word(&(durations[i]));
 		
 		//Amplifation duration 1.5 time
-//		dur *= 3;
+		dur *= 2;
 //		dur /= 2;
 		
 		//Enter freq in the exit PB0
 		OCR0A = (F_CPU / (2UL * 64UL * freq)) - 1;
-		PORTB = OCR0A|0xAA;
+		PORTB = OCR0A&0x55;
 		//waiting
 		while (dur > 0)
 		{
