@@ -54,7 +54,7 @@ void march()
 }
 
 
-inline void doSound(void)
+static inline void doSound(void)
 {
 	
 	//On timer and setting
@@ -69,7 +69,7 @@ inline void doSound(void)
 		int16_t dur = pgm_read_word(&(durations[i]));
 		
 		//Amplifation duration 1.5 time
-		dur *= 2;
+//		dur *= 2;
 //		dur /= 2;
 		
 		//Enter freq in the exit PB0
@@ -77,8 +77,8 @@ inline void doSound(void)
 		PORTB = OCR0A&0x55;
 		//waiting
 		while (dur > 0)
-		{
-			_delay_ms(10);
+		{	
+			delay_ms(10);;
 			dur -= 10;
 		}
 	}

@@ -3,13 +3,12 @@
 #include "beep.h"
 
 
-#define ON 0x01
-#define OFF 0x00
+
 #define COUNTLED 12
 
 const uint16_t ledInit[COUNTLED] = {
 
-0x0A,
+
 0x0A,
 0x06,
 0x06,
@@ -20,13 +19,14 @@ const uint16_t ledInit[COUNTLED] = {
 0x18,
 0x18,
 0x0C,
-0x0C
+0x0C,
+0x0A
 };
 
 const uint16_t ledCtrl[COUNTLED] = {
 
 
-0x02,
+
 0x08,
 0x02,
 0x04,
@@ -37,7 +37,8 @@ const uint16_t ledCtrl[COUNTLED] = {
 0x10,
 0x08,
 0x04,
-0x08
+0x08,
+0x02
 };
 
 void animation(uint8_t scenary)
@@ -50,9 +51,9 @@ void animation(uint8_t scenary)
 	
 	while(i<COUNTLED)
 	{
-		led_control(ledInit[i],ledCtrl[i],ON);
-		_delay_ms(25);
-		led_control(ledInit[i],ledCtrl[i],OFF);
+		led_controlOn(ledInit[i], ledCtrl[i]);
+		delay_ms(25);
+		led_controlOff(ledInit[i], ledCtrl[i]);
 		i++;
 	}
 	
@@ -63,17 +64,17 @@ void animation(uint8_t scenary)
 	i=COUNTLED;
 	while(i)
 	{
-		led_control(ledInit[i],ledCtrl[i],ON);
-		_delay_ms(25);
-		led_control(ledInit[i],ledCtrl[i],OFF);
+		led_controlOn(ledInit[i], ledCtrl[i]);
+		delay_ms(25);
+		led_controlOff(ledInit[i], ledCtrl[i]);
 		i--;
 	}
 	
 	if(i==0)
 	{
-		led_control(ledInit[i],ledCtrl[i],ON);
-		_delay_ms(25);
-		led_control(ledInit[i],ledCtrl[i],OFF);
+		led_controlOn(ledInit[i], ledCtrl[i]);
+		delay_ms(25);
+		led_controlOff(ledInit[i], ledCtrl[i]);
 	}
 	
 	}
@@ -88,54 +89,59 @@ void animation(uint8_t scenary)
 	i=0;
 	while(i<COUNTLED)
 	{
-		led_control(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i],ON);
-		_delay_ms(30);
-		led_control(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i],OFF);
+		led_controlOn(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i]|ledCtrl[COUNTLED-i]);
+		delay_ms(100);
+		led_controlOff(ledInit[i]|ledInit[COUNTLED-i],ledCtrl[i]|ledCtrl[COUNTLED-i]);
 
 		i++; 
 	}
 	
 	}
 
-/*	if(scenary ==0x04)
+	if(scenary ==0x04)
 	{
 	
 	i=0;
 	while(i<COUNTLED)
 	{
-		led_control(ledInit[i]|ledInit[COUNTLED/2+i],ledCtrl[i],ON);
-		_delay_ms(25);
-		led_control(ledInit[i]|ledInit[COUNTLED/2+i],ledCtrl[i],OFF);
+	
+		led_controlOn(ledInit[i]|ledInit[(COUNTLED/2)+i],ledCtrl[i]|ledCtrl[(COUNTLED/2)+i]);
+		delay_ms(100);
+		led_controlOff(ledInit[i]|ledInit[(COUNTLED/2)+i],ledCtrl[i]|ledCtrl[(COUNTLED/2)+i]);
+
 
 		i++; 
 	}
 
-	}*/
-
-	return 0;
-}
-
-
-void led_control(uint8_t ledInit, uint8_t ledNumber, uint8_t ledStatus)
-
-{	
-	if(ledStatus==OFF)	//Off led
-	{	
-		DDRB &= ~ledInit;
-		PORTB &= ~ledNumber;
-		
 	}
 
-	if(ledStatus==ON)	//On led
-	{
-		DDRB |= ledInit;
-		PORTB |= ledNumber;
-	}
 	
 }
 
+void led_controlOn(uint8_t ledInit, uint8_t ledNumber)
 
+{	
+		DDRB |= ledInit;
+		PORTB |= ledNumber;
+	
+}
 
+void led_controlOff(uint8_t ledInit, uint8_t ledNumber)
+
+{	
+		DDRB &= ~ledInit;
+		PORTB &= ~ledNumber;;
+	
+}
+void delay_ms(uint8_t delay)
+
+{
+	while(delay)
+	{	
+		delay--;
+		_delay_loop_2(2500);
+	}
+}
 
 
 

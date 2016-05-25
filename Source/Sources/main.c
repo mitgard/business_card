@@ -1,11 +1,9 @@
 #include <avr/io.h>
-#include <util/delay.h>
-#include <avr/sleep.h>
 #include <inttypes.h>
 #include "anim.h"
 #include "memory.h"
 
-#define REPEATER 3
+#define REPEATER 5
 
 int main (void)
 
