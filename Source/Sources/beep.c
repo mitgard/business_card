@@ -1,15 +1,17 @@
 #include "beep.h"
 
 
-#define COUNT_NOTES 39
+#define COUNT_NOTES 22
 
 //Freq note
+/*
 const uint16_t frequences[COUNT_NOTES] PROGMEM = {
 	392, 392, 392, 311, 466, 392, 311, 466, 392,
 	587, 587, 587, 622, 466, 369, 311, 466, 392,
 	784, 392, 392, 784, 739, 698, 659, 622, 659,
 	415, 554, 523, 493, 466, 440, 466,
 	311, 369, 311, 466, 392 };
+*/
 
 //Note duration
 /*const uint16_t durations[COUNT_NOTES] PROGMEM = {
@@ -19,12 +21,27 @@ const uint16_t frequences[COUNT_NOTES] PROGMEM = {
 	150, 350, 250, 100, 100, 100, 450,
 	150, 350, 250, 100, 750 };
 */
+/*
 const uint16_t durations[COUNT_NOTES] PROGMEM = {
 	700, 700, 700, 500, 200, 700, 500, 200, 1400,
 	700, 700, 700, 500, 200, 700, 500, 200, 1400,
 	700, 500, 200, 700, 500, 200, 200, 200, 900,
 	300, 700, 500, 200, 200, 200, 900,
 	300, 700, 500, 200, 1500 };
+*/
+
+const uint16_t frequences[COUNT_NOTES] PROGMEM ={
+	NOTE_E5, NOTE_D5, NOTE_E5, NOTE_A4, NOTE_R, 
+	NOTE_F5, NOTE_E5, NOTE_F5, NOTE_E5, NOTE_D5, 
+	NOTE_R, NOTE_F5, NOTE_E5, NOTE_F5, NOTE_A4, 
+	NOTE_R, NOTE_D5, NOTE_C5, NOTE_D5, NOTE_C5, 
+	NOTE_B5, NOTE_D5};
+const uint16_t durations[COUNT_NOTES] PROGMEM = {
+	100, 100, 400, 400, 600, 
+	100, 100, 200, 200, 400, 
+	600, 100, 100, 400, 400,
+	600, 100, 100, 200, 200,
+	200, 200};
 
 #ifndef	_FREQ_
 #define F_CPU 9600000UL

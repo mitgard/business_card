@@ -22,39 +22,43 @@
   30 000a 00D0      		rcall animation
   31 000c 812F      		mov r24,r17
   32 000e 00D0      		rcall animation
-  33               	.LM4:
-  34 0010 85B7      		in r24,85-32
-  35 0012 877E      		andi r24,lo8(-25)
-  36 0014 8061      		ori r24,lo8(16)
-  37 0016 85BF      		out 85-32,r24
-  38               	.LM5:
-  39 0018 85B7      		in r24,85-32
-  40 001a 8062      		ori r24,lo8(32)
-  41 001c 85BF      		out 85-32,r24
-  42               	.LM6:
-  43               	/* #APP */
-  44               	 ;  26 "main.c" 1
-  45 001e 8895      		sleep
-  46               		
-  47               	 ;  0 "" 2
-  48               	.LM7:
-  49               	/* #NOAPP */
-  50 0020 80E0      		ldi r24,lo8(0)
-  51 0022 90E0      		ldi r25,hi8(0)
-  52               	/* epilogue start */
-  53 0024 1F91      		pop r17
-  54 0026 0895      		ret
-  55               	.LFE7:
-  81               	.Letext0:
+  33 0010 812F      		mov r24,r17
+  34 0012 00D0      		rcall animation
+  35 0014 812F      		mov r24,r17
+  36 0016 00D0      		rcall animation
+  37               	.LM4:
+  38 0018 85B7      		in r24,85-32
+  39 001a 877E      		andi r24,lo8(-25)
+  40 001c 8061      		ori r24,lo8(16)
+  41 001e 85BF      		out 85-32,r24
+  42               	.LM5:
+  43 0020 85B7      		in r24,85-32
+  44 0022 8062      		ori r24,lo8(32)
+  45 0024 85BF      		out 85-32,r24
+  46               	.LM6:
+  47               	/* #APP */
+  48               	 ;  24 "main.c" 1
+  49 0026 8895      		sleep
+  50               		
+  51               	 ;  0 "" 2
+  52               	.LM7:
+  53               	/* #NOAPP */
+  54 0028 80E0      		ldi r24,lo8(0)
+  55 002a 90E0      		ldi r25,hi8(0)
+  56               	/* epilogue start */
+  57 002c 1F91      		pop r17
+  58 002e 0895      		ret
+  59               	.LFE7:
+  85               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:2      *ABS*:0000003f __SREG__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:5      *ABS*:00000034 __CCP__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Rustam\AppData\Local\Temp/ccBAsNj2.s:18     .text:00000000 main
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:2      *ABS*:0000003f __SREG__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:5      *ABS*:00000034 __CCP__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccHVFbOE.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 scenary_changer

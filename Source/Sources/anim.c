@@ -98,7 +98,7 @@ void animation(uint8_t scenary)
 	
 	}
 
-	if(scenary ==0x04)
+/*	if(scenary ==0x04)
 	{
 	
 	i=0;
@@ -114,7 +114,7 @@ void animation(uint8_t scenary)
 	}
 
 	}
-
+*/
 	
 }
 

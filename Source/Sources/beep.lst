@@ -23,291 +23,212 @@
   31               	.LM4:
   32 000a 0895      		ret
   33               	.LFE7:
-  35               	.global	doSound
-  37               	doSound:
-  38               	.LFB9:
+  35               	.global	march
+  37               	march:
+  38               	.LFB8:
   39               	.LM5:
-  40 000c EF92      		push r14
-  41 000e FF92      		push r15
-  42 0010 0F93      		push r16
-  43 0012 1F93      		push r17
-  44 0014 CF93      		push r28
-  45 0016 DF93      		push r29
-  46               	/* prologue: function */
-  47               	/* frame size = 0 */
+  40 000c 0F93      		push r16
+  41 000e 1F93      		push r17
+  42 0010 CF93      		push r28
+  43 0012 DF93      		push r29
+  44               	/* prologue: function */
+  45               	/* frame size = 0 */
+  46               	.LBB10:
+  47               	.LBB11:
   48               	.LM6:
-  49 0018 82E4      		ldi r24,lo8(66)
-  50 001a 8FBD      		out 79-32,r24
-  51               	.LM7:
-  52 001c 83E0      		ldi r24,lo8(3)
-  53 001e 83BF      		out 83-32,r24
-  54 0020 C0E0      		ldi r28,lo8(0)
-  55 0022 D0E0      		ldi r29,hi8(0)
-  56               	.LBB18:
-  57               	.LBB19:
-  58               	.LBB20:
-  59               	.LBB21:
-  60               	.LBB22:
-  61               	.LBB23:
-  62               	.LM8:
-  63 0024 90EC      		ldi r25,lo8(24000)
-  64 0026 E92E      		mov r14,r25
-  65 0028 9DE5      		ldi r25,hi8(24000)
-  66 002a F92E      		mov r15,r25
+  49 0014 87B3      		in r24,55-32
+  50 0016 8FEF      		ldi r24,lo8(-1)
+  51 0018 87BB      		out 55-32,r24
+  52               	.LM7:
+  53 001a 88B3      		in r24,56-32
+  54 001c 88BB      		out 56-32,r24
+  55               	.LBE11:
+  56               	.LBE10:
+  57               	.LBB12:
+  58               	.LBB13:
+  59               	.LM8:
+  60 001e 82E4      		ldi r24,lo8(66)
+  61 0020 8FBD      		out 79-32,r24
+  62               	.LM9:
+  63 0022 83E0      		ldi r24,lo8(3)
+  64 0024 83BF      		out 83-32,r24
+  65 0026 C0E0      		ldi r28,lo8(0)
+  66 0028 D0E0      		ldi r29,hi8(0)
   67               	.LVL0:
   68               	.L6:
-  69               	.LBE23:
-  70               	.LBE22:
-  71               	.LBE21:
-  72               	.LBE20:
-  73               	.LBE19:
-  74               	.LBE18:
-  75               	.LM9:
-  76 002c FE01      		movw r30,r28
-  77               	.LVL1:
-  78 002e E050      		subi r30,lo8(-(frequences))
-  79 0030 F040      		sbci r31,hi8(-(frequences))
-  80               	.LBB30:
-  81               	.LBB29:
-  82               	.LBB27:
-  83               	.LM10:
-  84               	/* #APP */
-  85               	 ;  62 "beep.c" 1
-  86 0032 2591      		lpm r18, Z+
-  87 0034 3491      		lpm r19, Z
-  88               		
-  89               	 ;  0 "" 2
-  90               	.LVL2:
-  91               	/* #NOAPP */
-  92 0036 FE01      		movw r30,r28
-  93               	.LVL3:
-  94 0038 E050      		subi r30,lo8(-(durations))
-  95 003a F040      		sbci r31,hi8(-(durations))
-  96               	.LBE27:
-  97               	.LM11:
-  98               	/* #APP */
-  99               	 ;  63 "beep.c" 1
- 100 003c 0591      		lpm r16, Z+
- 101 003e 1491      		lpm r17, Z
- 102               		
- 103               	 ;  0 "" 2
- 104               	.LM12:
- 105               	/* #NOAPP */
- 106 0040 4427      		clr r20
- 107 0042 37FD      		sbrc r19,7
- 108 0044 4095      		com r20
- 109 0046 542F      		mov r21,r20
- 110               	.LVL4:
- 111 0048 87E0      		ldi r24,7
- 112 004a 220F      	1:	lsl r18
- 113 004c 331F      		rol r19
- 114 004e 441F      		rol r20
- 115 0050 551F      		rol r21
- 116 0052 8A95      		dec r24
- 117 0054 01F4      		brne 1b
- 118               	.LVL5:
- 119 0056 60E0      		ldi r22,lo8(9600000)
- 120 0058 7CE7      		ldi r23,hi8(9600000)
- 121 005a 82E9      		ldi r24,hlo8(9600000)
- 122 005c 90E0      		ldi r25,hhi8(9600000)
- 123 005e 00D0      		rcall __udivmodsi4
- 124               	.LVL6:
- 125 0060 2150      		subi r18,lo8(-(-1))
- 126 0062 26BF      		out 86-32,r18
- 127               	.LM13:
- 128 0064 86B7      		in r24,86-32
- 129 0066 8A6A      		ori r24,lo8(-86)
- 130 0068 88BB      		out 56-32,r24
- 131 006a 00C0      		rjmp .L4
- 132               	.LVL7:
- 133               	.L5:
- 134               	.LBB28:
- 135               	.LBB26:
- 136               	.LBB25:
- 137               	.LBB24:
- 138               	.LM14:
- 139 006c C701      		movw r24,r14
- 140               	/* #APP */
- 141               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
- 142 006e 0197      		1: sbiw r24,1
- 143 0070 01F4      		brne 1b
- 144               	 ;  0 "" 2
- 145               	/* #NOAPP */
- 146               	.LBE24:
- 147               	.LBE25:
- 148               	.LBE26:
- 149               	.LBE28:
- 150               	.LM15:
- 151 0072 0A50      		subi r16,lo8(-(-10))
- 152 0074 1040      		sbci r17,hi8(-(-10))
- 153               	.L4:
- 154               	.LM16:
- 155 0076 1016      		cp __zero_reg__,r16
- 156 0078 1106      		cpc __zero_reg__,r17
- 157 007a 04F0      		brlt .L5
- 158 007c 2296      		adiw r28,2
- 159               	.LBE29:
- 160               	.LM17:
- 161 007e CE34      		cpi r28,78
- 162 0080 D105      		cpc r29,__zero_reg__
- 163 0082 01F4      		brne .L6
- 164               	.LBE30:
- 165               	.LM18:
- 166 0084 1FBC      		out 79-32,__zero_reg__
- 167               	.LM19:
- 168 0086 13BE      		out 83-32,__zero_reg__
+  69 002a FE01      		movw r30,r28
+  70               	.LVL1:
+  71 002c E050      		subi r30,lo8(-(frequences))
+  72 002e F040      		sbci r31,hi8(-(frequences))
+  73               	.LBB14:
+  74               	.LBB15:
+  75               	.LBB16:
+  76               	.LM10:
+  77               	/* #APP */
+  78               	 ;  85 "beep.c" 1
+  79 0030 2591      		lpm r18, Z+
+  80 0032 3491      		lpm r19, Z
+  81               		
+  82               	 ;  0 "" 2
+  83               	.LVL2:
+  84               	/* #NOAPP */
+  85 0034 FE01      		movw r30,r28
+  86               	.LVL3:
+  87 0036 E050      		subi r30,lo8(-(durations))
+  88 0038 F040      		sbci r31,hi8(-(durations))
+  89               	.LBE16:
+  90               	.LM11:
+  91               	/* #APP */
+  92               	 ;  86 "beep.c" 1
+  93 003a 0591      		lpm r16, Z+
+  94 003c 1491      		lpm r17, Z
+  95               		
+  96               	 ;  0 "" 2
+  97               	.LM12:
+  98               	/* #NOAPP */
+  99 003e 4427      		clr r20
+ 100 0040 37FD      		sbrc r19,7
+ 101 0042 4095      		com r20
+ 102 0044 542F      		mov r21,r20
+ 103               	.LVL4:
+ 104 0046 87E0      		ldi r24,7
+ 105 0048 220F      	1:	lsl r18
+ 106 004a 331F      		rol r19
+ 107 004c 441F      		rol r20
+ 108 004e 551F      		rol r21
+ 109 0050 8A95      		dec r24
+ 110 0052 01F4      		brne 1b
+ 111               	.LVL5:
+ 112 0054 60E0      		ldi r22,lo8(9600000)
+ 113 0056 7CE7      		ldi r23,hi8(9600000)
+ 114 0058 82E9      		ldi r24,hlo8(9600000)
+ 115 005a 90E0      		ldi r25,hhi8(9600000)
+ 116 005c 00D0      		rcall __udivmodsi4
+ 117               	.LVL6:
+ 118 005e 2150      		subi r18,lo8(-(-1))
+ 119 0060 26BF      		out 86-32,r18
+ 120               	.LM13:
+ 121 0062 86B7      		in r24,86-32
+ 122 0064 8575      		andi r24,lo8(85)
+ 123 0066 88BB      		out 56-32,r24
+ 124 0068 00C0      		rjmp .L4
+ 125               	.L5:
+ 126               	.LM14:
+ 127 006a 8AE0      		ldi r24,lo8(10)
+ 128 006c 00D0      		rcall delay_ms
+ 129               	.LM15:
+ 130 006e 0A50      		subi r16,lo8(-(-10))
+ 131 0070 1040      		sbci r17,hi8(-(-10))
+ 132               	.L4:
+ 133               	.LM16:
+ 134 0072 1016      		cp __zero_reg__,r16
+ 135 0074 1106      		cpc __zero_reg__,r17
+ 136 0076 04F0      		brlt .L5
+ 137 0078 2296      		adiw r28,2
+ 138               	.LBE15:
+ 139               	.LM17:
+ 140 007a CC32      		cpi r28,44
+ 141 007c D105      		cpc r29,__zero_reg__
+ 142 007e 01F4      		brne .L6
+ 143               	.LBE14:
+ 144               	.LM18:
+ 145 0080 1FBC      		out 79-32,__zero_reg__
+ 146               	.LM19:
+ 147 0082 13BE      		out 83-32,__zero_reg__
+ 148               	.LBE13:
+ 149               	.LBE12:
+ 150               	.LM20:
+ 151 0084 18BA      		out 56-32,__zero_reg__
+ 152               	.LM21:
+ 153 0086 17BA      		out 55-32,__zero_reg__
+ 154               	.LM22:
+ 155 0088 85B7      		in r24,85-32
+ 156 008a 877E      		andi r24,lo8(-25)
+ 157 008c 8061      		ori r24,lo8(16)
+ 158 008e 85BF      		out 85-32,r24
+ 159               	.LM23:
+ 160 0090 85B7      		in r24,85-32
+ 161 0092 8062      		ori r24,lo8(32)
+ 162 0094 85BF      		out 85-32,r24
+ 163               	.LM24:
+ 164               	/* #APP */
+ 165               	 ;  70 "beep.c" 1
+ 166 0096 8895      		sleep
+ 167               		
+ 168               	 ;  0 "" 2
  169               	/* epilogue start */
- 170               	.LM20:
- 171 0088 DF91      		pop r29
- 172 008a CF91      		pop r28
- 173 008c 1F91      		pop r17
- 174 008e 0F91      		pop r16
- 175               	.LVL8:
- 176 0090 FF90      		pop r15
- 177 0092 EF90      		pop r14
- 178 0094 0895      		ret
- 179               	.LFE9:
- 181               	.global	march
- 183               	march:
- 184               	.LFB8:
- 185               	.LM21:
- 186               	/* prologue: function */
- 187               	/* frame size = 0 */
- 188               	.LBB31:
- 189               	.LBB32:
- 190               	.LM22:
- 191 0096 87B3      		in r24,55-32
- 192 0098 8FEF      		ldi r24,lo8(-1)
- 193 009a 87BB      		out 55-32,r24
- 194               	.LM23:
- 195 009c 88B3      		in r24,56-32
- 196 009e 88BB      		out 56-32,r24
- 197               	.LBE32:
- 198               	.LBE31:
- 199               	.LM24:
- 200 00a0 00D0      		rcall doSound
- 201               	.LM25:
- 202 00a2 18BA      		out 56-32,__zero_reg__
- 203               	.LM26:
- 204 00a4 87B3      		in r24,55-32
- 205 00a6 87BB      		out 55-32,r24
- 206               	.LM27:
- 207 00a8 85B7      		in r24,85-32
- 208 00aa 877E      		andi r24,lo8(-25)
- 209 00ac 8061      		ori r24,lo8(16)
- 210 00ae 85BF      		out 85-32,r24
- 211               	.LM28:
- 212 00b0 85B7      		in r24,85-32
- 213 00b2 8062      		ori r24,lo8(32)
- 214 00b4 85BF      		out 85-32,r24
- 215               	.LM29:
- 216               	/* #APP */
- 217               	 ;  47 "beep.c" 1
- 218 00b6 8895      		sleep
- 219               		
- 220               	 ;  0 "" 2
- 221               	/* epilogue start */
- 222               	.LM30:
- 223               	/* #NOAPP */
- 224 00b8 0895      		ret
- 225               	.LFE8:
- 227               	.global	frequences
- 228               		.section	.progmem.data,"a",@progbits
- 231               	frequences:
- 232 0000 8801      		.word	392
- 233 0002 8801      		.word	392
- 234 0004 8801      		.word	392
- 235 0006 3701      		.word	311
- 236 0008 D201      		.word	466
- 237 000a 8801      		.word	392
- 238 000c 3701      		.word	311
- 239 000e D201      		.word	466
- 240 0010 8801      		.word	392
- 241 0012 4B02      		.word	587
- 242 0014 4B02      		.word	587
- 243 0016 4B02      		.word	587
- 244 0018 6E02      		.word	622
- 245 001a D201      		.word	466
- 246 001c 7101      		.word	369
- 247 001e 3701      		.word	311
- 248 0020 D201      		.word	466
- 249 0022 8801      		.word	392
- 250 0024 1003      		.word	784
- 251 0026 8801      		.word	392
- 252 0028 8801      		.word	392
- 253 002a 1003      		.word	784
- 254 002c E302      		.word	739
- 255 002e BA02      		.word	698
- 256 0030 9302      		.word	659
- 257 0032 6E02      		.word	622
- 258 0034 9302      		.word	659
- 259 0036 9F01      		.word	415
- 260 0038 2A02      		.word	554
- 261 003a 0B02      		.word	523
- 262 003c ED01      		.word	493
- 263 003e D201      		.word	466
- 264 0040 B801      		.word	440
- 265 0042 D201      		.word	466
- 266 0044 3701      		.word	311
- 267 0046 7101      		.word	369
- 268 0048 3701      		.word	311
- 269 004a D201      		.word	466
- 270 004c 8801      		.word	392
- 271               	.global	durations
- 274               	durations:
- 275 004e 5E01      		.word	350
- 276 0050 5E01      		.word	350
- 277 0052 5E01      		.word	350
- 278 0054 FA00      		.word	250
- 279 0056 6400      		.word	100
- 280 0058 5E01      		.word	350
- 281 005a FA00      		.word	250
- 282 005c 6400      		.word	100
- 283 005e BC02      		.word	700
- 284 0060 5E01      		.word	350
- 285 0062 5E01      		.word	350
- 286 0064 5E01      		.word	350
- 287 0066 FA00      		.word	250
- 288 0068 6400      		.word	100
- 289 006a 5E01      		.word	350
- 290 006c FA00      		.word	250
- 291 006e 6400      		.word	100
- 292 0070 BC02      		.word	700
- 293 0072 5E01      		.word	350
- 294 0074 FA00      		.word	250
- 295 0076 6400      		.word	100
- 296 0078 5E01      		.word	350
- 297 007a FA00      		.word	250
- 298 007c 6400      		.word	100
- 299 007e 6400      		.word	100
- 300 0080 6400      		.word	100
- 301 0082 C201      		.word	450
- 302 0084 9600      		.word	150
- 303 0086 5E01      		.word	350
- 304 0088 FA00      		.word	250
- 305 008a 6400      		.word	100
- 306 008c 6400      		.word	100
- 307 008e 6400      		.word	100
- 308 0090 C201      		.word	450
- 309 0092 9600      		.word	150
- 310 0094 5E01      		.word	350
- 311 0096 FA00      		.word	250
- 312 0098 6400      		.word	100
- 313 009a EE02      		.word	750
- 354               	.Letext0:
+ 170               	.LM25:
+ 171               	/* #NOAPP */
+ 172 0098 DF91      		pop r29
+ 173 009a CF91      		pop r28
+ 174 009c 1F91      		pop r17
+ 175 009e 0F91      		pop r16
+ 176               	.LVL7:
+ 177 00a0 0895      		ret
+ 178               	.LFE8:
+ 180               	.global	frequences
+ 181               		.section	.progmem.data,"a",@progbits
+ 184               	frequences:
+ 185 0000 9302      		.word	659
+ 186 0002 4B02      		.word	587
+ 187 0004 9302      		.word	659
+ 188 0006 B801      		.word	440
+ 189 0008 0000      		.word	0
+ 190 000a BA02      		.word	698
+ 191 000c 9302      		.word	659
+ 192 000e BA02      		.word	698
+ 193 0010 9302      		.word	659
+ 194 0012 4B02      		.word	587
+ 195 0014 0000      		.word	0
+ 196 0016 BA02      		.word	698
+ 197 0018 9302      		.word	659
+ 198 001a BA02      		.word	698
+ 199 001c B801      		.word	440
+ 200 001e 0000      		.word	0
+ 201 0020 4B02      		.word	587
+ 202 0022 0B02      		.word	523
+ 203 0024 4B02      		.word	587
+ 204 0026 0B02      		.word	523
+ 205 0028 DC03      		.word	988
+ 206 002a 4B02      		.word	587
+ 207               	.global	durations
+ 210               	durations:
+ 211 002c 6400      		.word	100
+ 212 002e 6400      		.word	100
+ 213 0030 9001      		.word	400
+ 214 0032 9001      		.word	400
+ 215 0034 5802      		.word	600
+ 216 0036 6400      		.word	100
+ 217 0038 6400      		.word	100
+ 218 003a C800      		.word	200
+ 219 003c C800      		.word	200
+ 220 003e 9001      		.word	400
+ 221 0040 5802      		.word	600
+ 222 0042 6400      		.word	100
+ 223 0044 6400      		.word	100
+ 224 0046 9001      		.word	400
+ 225 0048 9001      		.word	400
+ 226 004a 5802      		.word	600
+ 227 004c 6400      		.word	100
+ 228 004e 6400      		.word	100
+ 229 0050 C800      		.word	200
+ 230 0052 C800      		.word	200
+ 231 0054 C800      		.word	200
+ 232 0056 C800      		.word	200
+ 265               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 beep.c
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:2      *ABS*:0000003f __SREG__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:5      *ABS*:00000034 __CCP__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:18     .text:00000000 setup
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:37     .text:0000000c doSound
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:231    .progmem.data:00000000 frequences
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:274    .progmem.data:0000004e durations
-C:\Users\Rustam\AppData\Local\Temp/ccSGYU0K.s:183    .text:00000096 march
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:2      *ABS*:0000003f __SREG__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:5      *ABS*:00000034 __CCP__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:18     .text:00000000 setup
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:37     .text:0000000c march
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:184    .progmem.data:00000000 frequences
+C:\Users\Rustam\AppData\Local\Temp/ccTGx32c.s:210    .progmem.data:0000002c durations
 
 UNDEFINED SYMBOLS
 __udivmodsi4
+delay_ms
