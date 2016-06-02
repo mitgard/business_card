@@ -1,7 +1,7 @@
 #include "memory.h"
 
 
-#define MAX 0x03
+#define MAX 0x04
 
 uint8_t EEMEM startScenary;
 

@@ -1,7 +1,7 @@
 #include "beep.h"
 
 
-#define COUNT_NOTES 22
+#define COUNT_NOTES 40
 
 //Freq note
 /*
@@ -11,17 +11,7 @@ const uint16_t frequences[COUNT_NOTES] PROGMEM = {
 	784, 392, 392, 784, 739, 698, 659, 622, 659,
 	415, 554, 523, 493, 466, 440, 466,
 	311, 369, 311, 466, 392 };
-*/
 
-//Note duration
-/*const uint16_t durations[COUNT_NOTES] PROGMEM = {
-	350, 350, 350, 250, 100, 350, 250, 100, 700,
-	350, 350, 350, 250, 100, 350, 250, 100, 700,
-	350, 250, 100, 350, 250, 100, 100, 100, 450,
-	150, 350, 250, 100, 100, 100, 450,
-	150, 350, 250, 100, 750 };
-*/
-/*
 const uint16_t durations[COUNT_NOTES] PROGMEM = {
 	700, 700, 700, 500, 200, 700, 500, 200, 1400,
 	700, 700, 700, 500, 200, 700, 500, 200, 1400,
@@ -35,13 +25,30 @@ const uint16_t frequences[COUNT_NOTES] PROGMEM ={
 	NOTE_F5, NOTE_E5, NOTE_F5, NOTE_E5, NOTE_D5, 
 	NOTE_R, NOTE_F5, NOTE_E5, NOTE_F5, NOTE_A4, 
 	NOTE_R, NOTE_D5, NOTE_C5, NOTE_D5, NOTE_C5, 
-	NOTE_B5, NOTE_D5};
+	NOTE_B5, NOTE_D5, 		NOTE_C5, NOTE_B5,NOTE_C5, 
+	NOTE_D5, NOTE_C5, NOTE_D5, NOTE_E5, NOTE_D5, 
+	NOTE_C5, NOTE_B5, NOTE_A5, NOTE_F5, NOTE_E5, 
+	NOTE_E5, NOTE_F5, NOTE_E5, NOTE_D5, NOTE_C5  };
+/*
 const uint16_t durations[COUNT_NOTES] PROGMEM = {
 	100, 100, 400, 400, 600, 
 	100, 100, 200, 200, 400, 
 	600, 100, 100, 400, 400,
 	600, 100, 100, 200, 200,
-	200, 200};
+	200, 200,		400, 100, 100, 
+	400, 100,100, 200, 200,
+	200, 200, 400, 400, 800,
+	100, 100, 100, 100, 1600 };
+*/
+const uint16_t durations[COUNT_NOTES] PROGMEM = {
+	150, 150, 600, 600, 900, 
+	150, 150, 300, 300, 600, 
+	900, 150, 150, 600, 600,
+	900, 150, 150, 300, 300,
+	300, 300,		600, 150, 150, 
+	600, 150, 150, 300, 300,
+	300, 300, 600, 600, 1200,
+	150, 150, 150, 150, 2400 };
 
 #ifndef	_FREQ_
 #define F_CPU 9600000UL
@@ -91,7 +98,7 @@ static inline void doSound(void)
 		
 		//Enter freq in the exit PB0
 		OCR0A = (F_CPU / (2UL * 64UL * freq)) - 1;
-		PORTB = OCR0A&0x55;
+		PORTB = OCR0A;
 		//waiting
 		while (dur > 0)
 		{	
